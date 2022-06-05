@@ -1,9 +1,33 @@
+import type {Config} from "@jest/types"
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+const config: Config.InitialOptions = {
+  verbose: true,
+  clearMocks: true,
+  collectCoverage: true,
+  coverageDirectory: "coverage",
+  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+  moduleFileExtensions: [
+    "js",
+    "jsx",
+    "ts",
+    "tsx",
+    // "mjs",
+    // "cjs",
+    // "json",
+    // "node"
+  ],
+  coveragePathIgnorePatterns: [
+      "/node_modules/"
+    ],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/jest.setup.ts'],
+}
+
+export default config
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -14,16 +38,13 @@ export default {
   // cacheDirectory: "/private/var/folders/kq/3jvns30514n6t7_f1c_0jctc0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -76,16 +97,6 @@ export default {
   // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "mjs",
-  //   "cjs",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -192,4 +203,3 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
